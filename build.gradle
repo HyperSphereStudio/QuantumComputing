@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.redfx:strange:0.0.17'
+    implementation group: 'it.unimi.dsi', name: 'fastutil', version: '7.2.1'
+}
