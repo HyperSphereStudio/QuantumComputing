@@ -4,7 +4,7 @@ import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**@author Johnathan Bizzano**/
 public class QBit {
     double alpha;
     List<GateOperation> gates = new ArrayList<>();
@@ -35,6 +35,9 @@ public class QBit {
     }
     public QBit create(){
         return measured ? new QBit(alpha) : new QBit(measuredValue ? 0 : 1);
+    }
+    public Operation applyCircuit(Circuit c){
+        return QuantumEnvironment.apply(c, this);
     }
     boolean isSingle(){
         for(GateOperation op : gates){

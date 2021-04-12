@@ -1,5 +1,5 @@
 package com.hypersphere;
-
+/**@author Johnathan Bizzano**/
 public class Operation{
     private final Runnable r;
     public Operation(Runnable r){

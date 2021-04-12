@@ -15,41 +15,105 @@ import java.util.function.Function;
 import static org.redfx.strange.Complex.ONE;
 import static org.redfx.strange.Complex.ZERO;
 
+/**@author Johnathan Bizzano**/
 public class QuantumEnvironment {
     private static boolean WARNING_SUPRESSION = false;
 
-
+    /**Hadamard (H) gate
+     * Reversible
+     * If state is |0> or |1>, makes the chance of measuring either equal when applied
+     * Matrix (1/Sqrt(2)) * {{1, 1}, {1, -1}}
+     * @param qbits is an array of QBits to apply the transformation to
+     * */
     public static Operation h(QBit... qbits) throws Exception{
         return op((i) -> Gate.hadamard(i[0]), qbits);
     }
+    /**Hadamard (H) gate
+     * Reversible
+     * If state is |0> or |1>, makes the chance of measuring either equal when applied
+     * Matrix (1/Sqrt(2)) * {{1, 1}, {1, -1}}
+     * @param qbits is a list of QBits to apply the transformation to
+     * */
     public static Operation h(List<QBit> qbits) throws Exception {
         return h(qbits.toArray(new QBit[0]));
     }
-
+    /**Pauli-X (X) gate
+     * Reversible
+     * Is equal to a rotation around the X-axis of the Bloch sphere by pi radians
+     * = rx(PI, qbits)
+     * Matrix  {{0, 1}, {1, 0}}
+     * @param qbits is an array of QBits to apply the transformation to
+     * */
     public static Operation x(QBit... qbits) throws Exception{
         return op((i) -> Gate.x(i[0]), qbits);
     }
+    /**Pauli-X (X) gate
+     * Reversible
+     * Is equal to a rotation around the X-axis of the Bloch sphere by pi radians
+     * = rx(PI, qbits)
+     * Matrix {{0, 1}, {1, 0}}
+     * @param qbits is a list of QBits to apply the transformation to
+     * */
     public static Operation x(List<QBit> qbits) throws Exception {
         return x(qbits.toArray(new QBit[0]));
     }
+    /**Pauli-Y (Y) gate
+     * Reversible
+     * Is equal to a rotation around the Y-axis of the Bloch sphere by pi radians
+     * = ry(PI, qbits)
+     * Matrix {{0, -i}, {i, 0}}
+     * @param qbits is an array of QBits to apply the transformation to
+     * */
     public static Operation y(QBit... qbits) throws Exception{
         return op((i) -> Gate.y(i[0]), qbits);
     }
+    /**Pauli-Y (Y) gate
+     * Reversible
+     * Is equal to a rotation around the Y-axis of the Bloch sphere by pi radians
+     * = ry(PI, qbits)
+     * Matrix {{0, -i}, {i, 0}}
+     * @param qbits is a list of QBits to apply the transformation to
+     * */
     public static Operation y(List<QBit> qbits) throws Exception {
         return y(qbits.toArray(new QBit[0]));
     }
+    /**Pauli-Z (Z) gate
+     * Reversible
+     * Is equal to a rotation around the Z-axis of the Bloch sphere by pi radians
+     * = rz(PI, qbits)
+     * Matrix {{1, 0}, {0, -1}}
+     * @param qbits is an array of QBits to apply the transformation to
+     * */
     public static Operation z(QBit... qbits) throws Exception{
         return op((i) -> Gate.z(i[0]), qbits);
     }
+    /**Pauli-Z (Z) gate
+     * Reversible
+     * Is equal to a rotation around the Z-axis of the Bloch sphere by pi radians
+     * = rz(PI, qbits)
+     * Matrix {{1, 0}, {0, -1}}
+     * @param qbits is a list of QBits to apply the transformation to
+     * */
     public static Operation z(List<QBit> qbits) throws Exception {
         return z(qbits.toArray(new QBit[0]));
     }
+    /**Swap gate
+     * Reversible
+     * Swaps two qubits, Ex: |01> -> |10>
+     * Matrix {{1, 0, 0, 0}, {0, 0, 1, 0},{0, 1, 0, 0}, {0, 0, 0, 1}}
+     * @param qbit1 is a qubit to be swapped with qbit2
+     * @param qbit2 is a qubit to be swapped with qbit1;
+     * */
     public static Operation swap(QBit qbit1, QBit qbit2) throws Exception{
         return op((i) -> Gate.swap(i[0], i[1]), qbit1, qbit2);
     }
+    /**Identity matrix (does no transformation)
+     * @param qbits takes in an array of qubits**/
     public static Operation identity(QBit... qbits) throws Exception{
         return op((i) -> Gate.identity(i[0]), qbits);
     }
+    /**Identity matrix (does no transformation)
+     * @param qbits takes in a list of qubits**/
     public static Operation identity(List<QBit> qbits) throws Exception {
         return identity(qbits.toArray(new QBit[0]));
     }
@@ -206,6 +270,14 @@ public class QuantumEnvironment {
             }
         }, controlBit, targetBit);
     }
+    /**Controlled Swap gate
+     * Reversible
+     * Swaps two qubits, Ex: |01> -> |10>
+     * Matrix {{1, 0, 0, 0}, {0, 0, 1, 0},{0, 1, 0, 0}, {0, 0, 0, 1}}
+     * @param controlBit If this qubit is 1, a swap is performed on qubit2 and qubit3
+     * @param targetBit1 is a qubit to be swapped with targetBit2
+     * @param targetBit2 is a qubit to be swapped with targetBit1;
+     * */
     public static Operation cswap(QBit controlBit, QBit targetBit1, QBit targetBit2) throws Exception{
         return op((i) -> new ThreeQubitGate(i[0], i[1], i[2]) {
             final Complex[][] matrix = new Complex[][]{
@@ -306,6 +378,10 @@ public class QuantumEnvironment {
         }, bit1, bit2);
     }
 
+
+    public static int steps(QBit bit){
+        return bit.gates.size();
+    }
     public static Operation apply(Circuit c, QBit... qbits){
         return new Operation(() -> {
             for(QBit bit : qbits){
@@ -388,7 +464,7 @@ public class QuantumEnvironment {
     public static boolean[] measure(List<QBit> qbits) {
         return measure(qbits.toArray(new QBit[0]));
     }
-    public static QuantumExecutor construct(QBit... bits){
+    public static QuantumExecutor store(QBit... bits){
         boolean[] results = new boolean[bits.length];
         Object2IntOpenHashMap<QBit> indexMap = new Object2IntOpenHashMap<>();
         ArrayList<GateOperation> gates = new ArrayList<>();
@@ -427,8 +503,8 @@ public class QuantumEnvironment {
             return results;
         });
     }
-    public static QuantumExecutor construct(List<QBit> bits){
-        return construct(bits.toArray(new QBit[0]));
+    public static QuantumExecutor store(List<QBit> bits){
+        return store(bits.toArray(new QBit[0]));
     }
 
 

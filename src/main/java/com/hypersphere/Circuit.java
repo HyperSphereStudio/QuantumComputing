@@ -1,7 +1,7 @@
 package com.hypersphere;
 
 import java.util.List;
-
+/**@author Johnathan Bizzano**/
 public class Circuit {
     List<GateOperation> gates;
     String name;

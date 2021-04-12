@@ -1,11 +1,9 @@
+org/redfx/strange/local/QuantumExecutor.java
+ org.redfx.strange.local.QuantumExecutor
 com/hypersphere/Operation.java
  com.hypersphere.Operation
 com/hypersphere/GateOperation.java
  com.hypersphere.GateOperation
-org/redfx/strange/local/QuantumExecutor.java
- org.redfx.strange.local.QuantumExecutor
-com/hypersphere/Test.java
- com.hypersphere.Test
 com/hypersphere/Circuit.java
  com.hypersphere.Circuit
 com/hypersphere/QBit.java
@@ -26,3 +24,5 @@ com/hypersphere/QuantumEnvironment.java
  com.hypersphere.QuantumEnvironment$7
  com.hypersphere.QuantumEnvironment$8
  com.hypersphere.QuantumEnvironment$9
+com/hypersphere/Example.java
+ com.hypersphere.Example

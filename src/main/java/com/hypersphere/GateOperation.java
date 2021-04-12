@@ -5,7 +5,7 @@ import org.redfx.strange.Gate;
 import org.redfx.strange.Step;
 
 import java.util.function.Function;
-
+/**@author Johnathan Bizzano**/
 public class GateOperation {
 
     public Function<int[], Gate> g;
