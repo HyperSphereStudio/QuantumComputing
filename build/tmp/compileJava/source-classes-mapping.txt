@@ -1,32 +1,28 @@
-Utils/Gates.java
- Utils.Gates
-Expressions/Bit.java
- Expressions.Bit
-Expressions/Op.java
- Expressions.Op
- Expressions.Op$1
- Expressions.Pass
-Utils/QBit.java
- Utils.QBit
-Expressions/BitReader.java
- Expressions.BitReader
-Expressions/BitReaders.java
- Expressions.BitReaders
-Program/QuantumResult.java
- Program.QuantumResult
-Program/QuantumDistribution.java
- Program.QuantumDistribution
- Program.QuantumDistribution$1
-Program/QuantumProgram.java
- Program.QuantumProgram
-Program/QuantumExecutor.java
- Program.QuantumExecutor
-Expressions/Expression.java
- Expressions.CodeLine
- Expressions.Compiled
- Expressions.Expression
- Expressions.Expression$BlockExpression
- Expressions.Expression$CodeExpression
- Expressions.Expression$ConstantExpression
-Main.java
- Main
+com/hypersphere/Operation.java
+ com.hypersphere.Operation
+com/hypersphere/GateOperation.java
+ com.hypersphere.GateOperation
+org/redfx/strange/local/QuantumExecutor.java
+ org.redfx.strange.local.QuantumExecutor
+com/hypersphere/Test.java
+ com.hypersphere.Test
+com/hypersphere/Circuit.java
+ com.hypersphere.Circuit
+com/hypersphere/QBit.java
+ com.hypersphere.QBit
+com/hypersphere/QuantumEnvironment.java
+ com.hypersphere.QuantumEnvironment
+ com.hypersphere.QuantumEnvironment$1
+ com.hypersphere.QuantumEnvironment$10
+ com.hypersphere.QuantumEnvironment$11
+ com.hypersphere.QuantumEnvironment$12
+ com.hypersphere.QuantumEnvironment$13
+ com.hypersphere.QuantumEnvironment$14
+ com.hypersphere.QuantumEnvironment$2
+ com.hypersphere.QuantumEnvironment$3
+ com.hypersphere.QuantumEnvironment$4
+ com.hypersphere.QuantumEnvironment$5
+ com.hypersphere.QuantumEnvironment$6
+ com.hypersphere.QuantumEnvironment$7
+ com.hypersphere.QuantumEnvironment$8
+ com.hypersphere.QuantumEnvironment$9

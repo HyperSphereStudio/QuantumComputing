@@ -1,19 +1,18 @@
 package com.hypersphere;
 
-import com.hypersphere.Expressions.Bit;
-import com.hypersphere.Expressions.Expression;
-import com.hypersphere.Program.QuantumProgram;
+public class Test extends QuantumEnvironment {
 
-
-public class Test {
-
-    public static void main(String[] args){
-        Bit b = new Bit(true);
-        Bit b2 = new Bit(true);
-        QuantumProgram<boolean[]> p = Expression.compile(Expression.init(b2));
-        p.printInfo();
-        p.run(1).print();
+    public static void main(String[] args) throws Exception {
+        
     }
 
-
+    public static boolean myCircuit(double d) throws Exception {
+        QBit bit = new QBit();
+        QBit bit2 = new QBit(d);
+        x(bit);
+        h(bit);
+        y(bit);
+        cx(bit, bit2);
+        return measure(bit2);
+    }
 }
