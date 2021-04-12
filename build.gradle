@@ -12,4 +12,5 @@ repositories {
 dependencies {
     implementation 'org.redfx:strange:0.0.17'
     implementation group: 'it.unimi.dsi', name: 'fastutil', version: '7.2.1'
+    implementation group: 'com.github.javaparser', name: 'javaparser-core', version: '3.20.2'
 }
